@@ -1,0 +1,123 @@
+<header>
+    <h2 class="text-center">Quản lý cấu hình Firebase</h2>
+    <hr />
+</header>
+<div class="content">
+    <form [formGroup]="myForm">
+        <div class="group-gap">
+            <div class="d-block my-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">Banner Config Status:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="custom-select"
+                            formControlName="banner_config_status"  [class.is-invalid]="submitted || f.banner_config_status.errors?.required">
+                            <option value="">Choose your Banner Status</option>
+                            <option *ngFor="let item of banner" [value]="item.value">
+                                {{ item.key }}
+                            </option>
+                        </select>
+                        <!-- error block -->
+                        <div *ngIf="submitted || f?.banner_config_status?.errors" class="errors-message">
+                            <div *ngIf="f?.banner_config_status?.errors?.required">Required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">Type:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="custom-select" formControlName="type" [class.is-invalid]="submitted || f?.type?.errors?.required">
+                            <option value="">Choose your Type</option>
+                            <option *ngFor="let item of _type" [value]="item.value">
+                                {{ item.key }}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted || f?.type?.errors" class="errors-message">
+                            <div *ngIf="f?.type?.errors?.required">Required</div>
+                        </div>
+    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">Environment:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="custom-select" formControlName="environment" [class.is-invalid]="submitted || f?.environment?.errors?.required">
+                            <option value="">Choose your Environment</option>
+                            <option *ngFor="let item of _environment" [value]="item">
+                                {{ item }}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted || f?.environment?.errors" class="errors-message">
+                            <div *ngIf="f?.environment?.errors?.required">Required</div>
+                        </div>
+    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">Update:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="custom-select"  formControlName="is_updating" [class.is-invalid]="submitted || f?.is_updating?.errors?.required">
+                            <option value="">Choose your Update</option>
+                            <option *ngFor="let item of banner" [value]="item.value">
+                                {{ item.key }}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted || f?.is_updating?.errors" class="errors-message">
+                            <div *ngIf="f?.is_updating?.errors?.required">Required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">Time Date:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input name="time_date" type="date" [class.is-invalid]="submitted || f?.time_date?.errors?.required"
+                            formControlName="time_date" class="form-control"/>
+                            <div *ngIf="submitted || f?.time_date?.errors" class="errors-message">
+                                <div *ngIf="f?.time_date?.errors?.required">Required</div>
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">Time From:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="time" id="time_from" name="time_from"  [class.is-invalid]="submitted || f?.time_from?.errors?.required"
+                            formControlName="time_from" />
+                            <div *ngIf="submitted || f?.time_from?.errors" class="errors-message">
+                                <div *ngIf="f?.time_from?.errors?.required">Required</div>
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">Time To:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="time" id="time_to" name="time_to"  [class.is-invalid]="submitted || f?.time_to?.errors?.required"
+                            formControlName="time_to"/>
+                            <div *ngIf="submitted || f?.time_to?.errors" class="errors-message">
+                                <div *ngIf="f?.time_to?.errors?.required">Required</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="button" class="btn btn-danger btn-lg btn-block" (click)="onSubmit()">
+            Submit
+        </button>
+    </form>
+    <!-- Form ends -->
+</div>

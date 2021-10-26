@@ -1,0 +1,46 @@
+<div class="wrapper">
+	<nav id="sidebar" [class.active]="sidebarActive">
+		<div class="sidebar-header">
+			<h3>Manga Cortex</h3>
+			<hr>
+		</div>
+		<ul class="list-unstyled components">
+			<!-- <li> <a routerLink="/authors">Author</a> </li>
+			<li> <a routerLink="/comics">Comics</a> </li>
+			<li> <a routerLink="/categories">Categories</a> </li>
+			<li> <a routerLink="/chaps">Chapters</a> </li> -->
+			<ng-container *ngFor="let item of leftMenu">
+				<li><a [routerLink]="item.routerLink" [class.left-menu-active]="true" routerLinkActive='router-active '>{{item.name}}</a></li>
+			</ng-container>
+		</ul>
+	</nav>
+
+
+	<div class="content" id="content">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+			<button type="button" id="sidebarCollapse"
+				(click)="toggleClass()" class="btn btn-info"> <i class="fa fa-align-justify"></i>
+			</button> 
+
+			<button
+				class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span
+					class="navbar-toggler-icon"></span> </button>
+					
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"> <a class="nav-link" href="#">Home <span
+								class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item"> <a class="nav-link" href="#">Features</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="#">Pricing</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="#">Contact</a> </li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="content-wrapper">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>
